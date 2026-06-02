@@ -1,0 +1,221 @@
+/* style.css - Veterinaria */
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  background-color: #c0c0c0;
+  margin: 0;
+  padding: 0;
+}
+
+/* PORTADA */
+#portada {
+  width: 400px;
+  margin: 60px auto;
+  background-color: white;
+  border: 2px solid black;
+  padding: 30px;
+  text-align: center;
+}
+
+#portada h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#portada ul {
+  text-align: left;
+  margin: 16px auto;
+  width: 220px;
+}
+
+#portada li {
+  margin-bottom: 6px;
+}
+
+/* SISTEMA */
+#sistema {
+  display: none;
+}
+
+#header {
+  background-color: navy;
+  color: white;
+  padding: 10px 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+#header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* MENU */
+#menu {
+  background-color: #d4d0c8;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(11, auto);
+  gap: 4px;
+  border-bottom: 2px solid gray;
+}
+
+/* CONTENIDO */
+#contenido {
+  padding: 20px;
+  background-color: white;
+}
+
+/* SECCIONES */
+.sec {
+  display: none;
+}
+
+.sec.activa {
+  display: block;
+}
+
+.sec h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  background-color: navy;
+  color: white;
+  padding: 6px 12px;
+}
+
+/* TABLA DE FORMULARIO */
+table.form-table {
+  border-collapse: collapse;
+}
+
+/* compatibilidad: si no tiene clase, también aplica el estilo original */
+table:not(.datos) {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 6px 10px;
+  vertical-align: middle;
+}
+
+table.form-table td:first-child,
+table:not(.datos) td:first-child {
+  font-weight: bold;
+  width: 150px;
+  color: navy;
+}
+
+input, select {
+  font-size: 14px;
+  padding: 4px 8px;
+  border: 1px solid gray;
+  width: 250px;
+}
+
+/* BOTONES */
+button {
+  font-size: 13px;
+  padding: 6px 16px;
+  background-color: #d4d0c8;
+  border: 2px solid gray;
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+button:hover {
+  background-color: silver;
+}
+
+/* LOG */
+.log {
+  margin-top: 14px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+}
+
+.log p {
+  background-color: black;
+  color: lime;
+  padding: 6px 10px;
+  margin: 4px 0;
+  border-left: 4px solid lime;
+}
+
+.log p.error {
+  color: red;
+  border-left-color: red;
+}
+
+/* ── TABLA DE DOCUMENTOS ─────────────────────────────────────── */
+
+.subtitulo-tabla {
+  margin: 18px 0 6px 0;
+  font-size: 13px;
+  color: navy;
+  border-bottom: 1px solid navy;
+  padding-bottom: 4px;
+}
+
+.tabla-scroll {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+table.datos {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+  font-family: "Courier New", monospace;
+}
+
+table.datos thead tr {
+  background-color: navy;
+  color: white;
+}
+
+table.datos thead th {
+  padding: 5px 10px;
+  text-align: left;
+  font-weight: bold;
+  white-space: nowrap;
+  border: 1px solid #336;
+}
+
+table.datos tbody tr:nth-child(odd) {
+  background-color: #f0f4ff;
+}
+
+table.datos tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+table.datos tbody tr:hover {
+  background-color: #d0d8ff;
+}
+
+table.datos tbody td {
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  color: #222;
+  white-space: nowrap;
+}
+
+table.datos caption {
+  text-align: left;
+  font-style: italic;
+  color: gray;
+  padding: 4px 0;
+  font-size: 12px;
+}
+
+/* FOOTER */
+#footer {
+  background-color: navy;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+  margin-top: 20px;
+}

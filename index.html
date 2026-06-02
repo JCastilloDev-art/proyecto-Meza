@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Veterinaria - Sistema</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PORTADA -->
+<div id="portada">
+  <h1>🐾 Sistema Veterinario</h1>
+  <p>Base de datos: <b>veterinaria</b></p>
+  <hr>
+  <ul>
+    <li>Registra dueños y mascotas</li>
+    <li>Gestiona veterinarios</li>
+    <li>Agenda citas</li>
+    <li>Controla tratamientos</li>
+    <li>Consulta expedientes clínicos</li>
+  </ul>
+  <br>
+  <button onclick="entrar()">Entrar al sistema</button>
+</div>
+
+<!-- SISTEMA -->
+<div id="sistema">
+
+  <div id="header">
+    <h2>🐾 Sistema Veterinario</h2>
+    <button onclick="salir()">Volver a portada</button>
+  </div>
+
+  <!-- MENU -->
+  <div id="menu">
+    <button onclick="ver('duenos')">Dueños</button>
+    <button onclick="ver('mascotas')">Mascotas</button>
+    <button onclick="ver('veterinarios')">Veterinarios</button>
+    <button onclick="ver('citas')">Citas</button>
+    <button onclick="ver('tratamientos')">Tratamientos</button>
+    <button onclick="ver('clientes')">Clientes</button>
+    <button onclick="ver('mascotas_detalle')">Mascotas Detalle</button>
+    <button onclick="ver('vets_detalle')">Vets Detalle</button>
+    <button onclick="ver('trat_detalle')">Trat. Detalle</button>
+    <button onclick="ver('citas_detalle')">Citas Detalle</button>
+    <button onclick="ver('expedientes')">Expedientes</button>
+  </div>
+
+  <div id="contenido">
+
+    <!-- 1. DUEÑOS -->
+    <div id="sec-duenos" class="sec">
+      <h3>Registro de Dueños</h3>
+      <form onsubmit="guardar(event,'duenos')">
+        <table class="form-table">
+          <tr><td>ID Dueño</td><td><input type="number" name="ID_Dueno" required></td></tr>
+          <tr><td>Nombre</td><td><input type="text" name="Nombre" required></td></tr>
+          <tr><td>Teléfono</td><td><input type="text" name="Telefono" required></td></tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-duenos" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-duenos" class="datos"></table></div>
+    </div>
+
+    <!-- 2. MASCOTAS -->
+    <div id="sec-mascotas" class="sec">
+      <h3>Registro de Mascotas</h3>
+      <form onsubmit="guardar(event,'mascotas')">
+        <table class="form-table">
+          <tr><td>ID Mascota</td><td><input type="number" name="ID_Mascota" required></td></tr>
+          <tr><td>Nombre</td><td><input type="text" name="Nombre" required></td></tr>
+          <tr><td>Especie</td>
+            <td><select name="Especie" required>
+              <option value="">-- Elige --</option>
+              <option>Perro</option><option>Gato</option><option>Ave</option><option>Otro</option>
+            </select></td>
+          </tr>
+          <tr><td>ID Dueño</td><td><input type="number" name="ID_Dueno" required></td></tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-mascotas" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-mascotas" class="datos"></table></div>
+    </div>
+
+    <!-- 3. VETERINARIOS -->
+    <div id="sec-veterinarios" class="sec">
+      <h3>Registro de Veterinarios</h3>
+      <form onsubmit="guardar(event,'veterinarios')">
+        <table class="form-table">
+          <tr><td>ID Veterinario</td><td><input type="number" name="ID_Veterinario" required></td></tr>
+          <tr><td>Nombre</td><td><input type="text" name="Nombre" required></td></tr>
+          <tr><td>Especialidad</td>
+            <td><select name="Especialidad" required>
+              <option value="">-- Elige --</option>
+              <option>Cirugía</option><option>General</option><option>Dental</option>
+              <option>Derma</option><option>Urgencias</option><option>Exóticos</option>
+              <option>Ojos</option><option>Cardiología</option><option>Oncología</option>
+            </select></td>
+          </tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-veterinarios" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-veterinarios" class="datos"></table></div>
+    </div>
+
+    <!-- 4. CITAS -->
+    <div id="sec-citas" class="sec">
+      <h3>Registro de Citas</h3>
+      <form onsubmit="guardar(event,'citas')">
+        <table class="form-table">
+          <tr><td>ID Cita</td><td><input type="number" name="ID_Cita" required></td></tr>
+          <tr><td>Fecha</td><td><input type="date" name="Fecha" required></td></tr>
+          <tr><td>ID Mascota</td><td><input type="number" name="ID_Mascota" required></td></tr>
+          <tr><td>ID Veterinario</td><td><input type="number" name="ID_Veterinario" required></td></tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-citas" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-citas" class="datos"></table></div>
+    </div>
+
+    <!-- 5. TRATAMIENTOS -->
+    <div id="sec-tratamientos" class="sec">
+      <h3>Registro de Tratamientos</h3>
+      <form onsubmit="guardar(event,'tratamientos')">
+        <table class="form-table">
+          <tr><td>ID Tratamiento</td><td><input type="text" name="ID_Tratamiento" required></td></tr>
+          <tr><td>Descripción</td><td><input type="text" name="Descripcion" required></td></tr>
+          <tr><td>Precio ($)</td><td><input type="number" name="Precio" min="0" required></td></tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-tratamientos" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-tratamientos" class="datos"></table></div>
+    </div>
+
+    <!-- 6. CLIENTES -->
+    <div id="sec-clientes" class="sec">
+      <h3>Registro de Clientes</h3>
+      <form onsubmit="guardar(event,'clientes')">
+        <table class="form-table">
+          <tr><td>ID Cliente</td><td><input type="text" name="ID_Cliente" required></td></tr>
+          <tr><td>Nombre</td><td><input type="text" name="Nombre" required></td></tr>
+          <tr><td>Apellido</td><td><input type="text" name="Apellido" required></td></tr>
+          <tr><td>Motivo</td><td><input type="text" name="Motivo" required></td></tr>
+          <tr><td>Correo</td><td><input type="email" name="Correo"></td></tr>
+          <tr><td>Teléfono</td><td><input type="text" name="Telefono"></td></tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-clientes" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-clientes" class="datos"></table></div>
+    </div>
+
+    <!-- 7. MASCOTAS DETALLE -->
+    <div id="sec-mascotas_detalle" class="sec">
+      <h3>Mascotas - Detalle</h3>
+      <form onsubmit="guardar(event,'mascotas_detalle')">
+        <table class="form-table">
+          <tr><td>ID Mascota</td><td><input type="text" name="ID_Mascota" required></td></tr>
+          <tr><td>Nombre</td><td><input type="text" name="Nombre"></td></tr>
+          <tr><td>Especie</td>
+            <td><select name="Especie" required>
+              <option value="">-- Elige --</option>
+              <option>Perro</option><option>Gato</option><option>Ave</option><option>Otro</option>
+            </select></td>
+          </tr>
+          <tr><td>Raza</td><td><input type="text" name="Raza"></td></tr>
+          <tr><td>Motivo</td><td><input type="text" name="Motivo" required></td></tr>
+          <tr><td>Fecha Nacimiento</td><td><input type="date" name="Fecha_Nacimiento"></td></tr>
+          <tr><td>Sexo</td>
+            <td><select name="Sexo">
+              <option value="">-- Elige --</option>
+              <option value="M">Macho</option><option value="H">Hembra</option>
+            </select></td>
+          </tr>
+          <tr><td>Edad</td><td><input type="number" name="Edad" min="0"></td></tr>
+          <tr><td>ID Cliente</td><td><input type="text" name="ID_Cliente" required></td></tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-mascotas_detalle" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-mascotas_detalle" class="datos"></table></div>
+    </div>
+
+    <!-- 8. VETERINARIOS DETALLE -->
+    <div id="sec-vets_detalle" class="sec">
+      <h3>Veterinarios - Detalle</h3>
+      <form onsubmit="guardar(event,'veterinarios_detalle')">
+        <table class="form-table">
+          <tr><td>ID Veterinario</td><td><input type="text" name="ID_Veterinario" required></td></tr>
+          <tr><td>Nombre</td><td><input type="text" name="Nombre" required></td></tr>
+          <tr><td>Especialidad</td>
+            <td><select name="Especialidad" required>
+              <option value="">-- Elige --</option>
+              <option>Cirugía</option><option>General</option><option>Dental</option>
+              <option>Derma</option><option>Urgencias</option><option>Exóticos</option>
+              <option>Ojos</option><option>Cardiología</option><option>Oncología</option>
+            </select></td>
+          </tr>
+          <tr><td>Turno</td>
+            <td><select name="Turno" required>
+              <option value="">-- Elige --</option>
+              <option>Matutino</option><option>Vespertino</option><option>Nocturno</option>
+            </select></td>
+          </tr>
+          <tr><td>Teléfono</td><td><input type="text" name="Telefono"></td></tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-veterinarios_detalle" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-veterinarios_detalle" class="datos"></table></div>
+    </div>
+
+    <!-- 9. TRATAMIENTOS DETALLE -->
+    <div id="sec-trat_detalle" class="sec">
+      <h3>Tratamientos - Detalle</h3>
+      <form onsubmit="guardar(event,'tratamientos_detalle')">
+        <table class="form-table">
+          <tr><td>ID Tratamiento</td><td><input type="number" name="ID_Tratamiento" required></td></tr>
+          <tr><td>Estado</td>
+            <td><select name="Estado" required>
+              <option value="">-- Elige --</option>
+              <option>Activo</option><option>Completado</option><option>Suspendido</option>
+            </select></td>
+          </tr>
+          <tr><td>Servicio</td><td><input type="text" name="Servicio" required></td></tr>
+          <tr><td>Costo ($)</td><td><input type="number" name="Costo" min="0" required></td></tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-tratamientos_detalle" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-tratamientos_detalle" class="datos"></table></div>
+    </div>
+
+    <!-- 10. CITAS DETALLE -->
+    <div id="sec-citas_detalle" class="sec">
+      <h3>Citas - Detalle</h3>
+      <form onsubmit="guardar(event,'citas_detalle')">
+        <table class="form-table">
+          <tr><td>ID Cita</td><td><input type="text" name="ID_Cita" required></td></tr>
+          <tr><td>Fecha</td><td><input type="date" name="Fecha" required></td></tr>
+          <tr><td>Tipo</td>
+            <td><select name="Tipo" required>
+              <option value="">-- Elige --</option>
+              <option>Chequeo</option><option>Vacuna</option><option>Urgencia</option>
+              <option>Cirugía</option><option>Consulta</option>
+            </select></td>
+          </tr>
+          <tr><td>ID Mascota</td><td><input type="text" name="ID_Mascota" required></td></tr>
+          <tr><td>ID Veterinario</td><td><input type="text" name="ID_Veterinario" required></td></tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-citas_detalle" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-citas_detalle" class="datos"></table></div>
+    </div>
+
+    <!-- 11. EXPEDIENTES -->
+    <div id="sec-expedientes" class="sec">
+      <h3>Expedientes Clínicos</h3>
+      <form onsubmit="guardar(event,'expedientes_clinicos')">
+        <table class="form-table">
+          <tr><td>ID Expediente</td><td><input type="number" name="ID_Expediente" required></td></tr>
+          <tr><td>ID Mascota</td><td><input type="text" name="ID_Mascota" required></td></tr>
+          <tr><td>ID Veterinario</td><td><input type="text" name="ID_Veterinario" required></td></tr>
+          <tr><td>Alerta Roja</td>
+            <td><select name="Alerta_Roja">
+              <option value="false">No</option>
+              <option value="true">Sí</option>
+            </select></td>
+          </tr>
+          <tr><td></td><td><button type="submit">Guardar</button> <button type="reset">Limpiar</button></td></tr>
+        </table>
+      </form>
+      <div id="log-expedientes_clinicos" class="log"></div>
+      <h4 class="subtitulo-tabla">Documentos guardados</h4>
+      <div class="tabla-scroll"><table id="tabla-expedientes_clinicos" class="datos"></table></div>
+    </div>
+
+  </div><!-- /contenido -->
+
+  <div id="footer">
+    Sistema Veterinario &copy; 2000 | veterinaria DB | MongoDB
+  </div>
+
+</div><!-- /sistema -->
+
+<script src="script.js"></script>
+</body>
+</html>

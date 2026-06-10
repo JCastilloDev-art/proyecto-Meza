@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // ── Configuración ────────────────────────────────────────────────
-define('MONGO_URI', 'mongodb://localhost:27017');
+define('MONGO_URI', 'mongodb+srv://Castillo:jaredyvicky@cluster0.ifohxwq.mongodb.net/?appName=Cluster0');
 define('DB_NAME',   'veterinaria');
 
 // ── Conexión ─────────────────────────────────────────────────────
